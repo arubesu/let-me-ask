@@ -4,18 +4,19 @@ import googleIconImg from "../../assets/images/google-icon.svg";
 import logoImg from "../../assets/images/logo.svg";
 import { Button } from '../../components/Button/Button';
 import { useHistory } from 'react-router';
-import { auth, firebase } from '../../services/firebase';
+import { useAuth } from '../../hooks/useAuth';
 
 export const Home = () => {
 
+  const { user, signInWithGoogle } = useAuth();
+
   const history = useHistory();
 
-  function handleCreateRoom() {
-    const provider = new firebase.auth.GoogleAuthProvider();
+  async function handleCreateRoom() {
 
-    auth.signInWithPopup(provider).then((data) => {
-      console.log(data)
-    });
+    if (!user) {
+      await signInWithGoogle();
+    }
 
     history.push('/rooms/new');
   }
