@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom'
 import { Button } from '../../components/Button/Button';
 import { ClipboardCopier } from '../../components/ClipboardCopier';
 
-import logoImg from '../assets/images/logo.svg';
+import logoImg from '../../assets/images/logo.svg';
 import { Container, Content, QuestionsBoard, QuestionsBoardFooter, QuestionsBoardHeader } from './styles';
 
 interface RoomParams {
