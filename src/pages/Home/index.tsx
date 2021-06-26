@@ -1,10 +1,25 @@
 import { Container, Cover, SignInContainer, SignInContent, Separator } from './styles';
-import illustrationImg from "../assets/images/illustration.svg";
-import googleIconImg from "../assets/images/google-icon.svg";
-import logoImg from "../assets/images/logo.svg";
-import { Button } from '../components/Button/Button';
+import illustrationImg from "../../assets/images/illustration.svg";
+import googleIconImg from "../../assets/images/google-icon.svg";
+import logoImg from "../../assets/images/logo.svg";
+import { Button } from '../../components/Button/Button';
+import { useHistory } from 'react-router';
+import { auth, firebase } from '../../services/firebase';
 
 export const Home = () => {
+
+  const history = useHistory();
+
+  function handleCreateRoom() {
+    const provider = new firebase.auth.GoogleAuthProvider();
+
+    auth.signInWithPopup(provider).then((data) => {
+      console.log(data)
+    });
+
+    history.push('/rooms/new');
+  }
+
   return (
     <Container>
       <Cover>
@@ -15,7 +30,7 @@ export const Home = () => {
       <SignInContainer>
         <SignInContent>
           <img src={logoImg} alt="let me ask" />
-          <button>
+          <button onClick={handleCreateRoom}>
             <img src={googleIconImg} alt="google logo" />
             Create your room with google
           </button>
