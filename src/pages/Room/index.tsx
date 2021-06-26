@@ -18,7 +18,7 @@ export const Room = () => {
       <header>
         <Content>
           <img src={logoImg} alt="Letmeask" />
-          <ClipboardCopier text={params.id} label="Room Code" />
+          <ClipboardCopier text={params.id} label="Room#" />
         </Content>
       </header>
 

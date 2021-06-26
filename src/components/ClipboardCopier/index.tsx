@@ -18,7 +18,7 @@ export const ClipboardCopier = ({ text, label }: ClipboardCopierProps) => {
       <div>
         <img src={copyImg} alt="Copy text" />
       </div>
-      <span>{label} #{text}</span>
+      <span>{label} {text}</span>
     </CopyToClipboardButton>
   )
 }
