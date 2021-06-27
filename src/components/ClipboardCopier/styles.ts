@@ -25,7 +25,7 @@ export const CopyToClipboardButton = styled.button`
     align-self: center;
     flex: 1;
     padding: 0 1rem 0 0.75rem;
-    width: 15rem;
+    width: 100%;
     font-size: 0.875rem;
     font-weight: 500;
   }
