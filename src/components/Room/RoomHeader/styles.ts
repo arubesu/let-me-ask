@@ -6,27 +6,23 @@ export const Header = styled.header`
 `;
 
 export const Content = styled.div`
-      max-width: 1120px;
-      margin: 0 auto;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+  max-width: 1120px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 
-      > img {
-        max-height: 2.875rem;
-      }
+  > img {
+    max-height: 2.875rem;
+  }
 
-      > div {
-        display: flex;
-        gap: 16px;
+  > div {
+    display: flex;
+    gap: 16px;
 
-        button {
-          height: 40px;
-        }
-      }
-
-      .question-list {
-      margin-top: 32px;
+    button {
+      height: 40px;
     }
+  }
 `;
 

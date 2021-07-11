@@ -62,3 +62,6 @@ export const QuestionsBoardFooter = styled.div`
     }
   }
 `
+export const QuestionsListContainer = styled.div`
+    margin-top: 32px;
+`
