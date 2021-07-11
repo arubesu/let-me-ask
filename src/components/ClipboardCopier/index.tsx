@@ -4,7 +4,7 @@ import { CopyToClipboardButton } from './styles';
 
 interface ClipboardCopierProps {
   text: string;
-  label: string;
+  label?: string;
 }
 
 export const ClipboardCopier = ({ text, label }: ClipboardCopierProps) => {
