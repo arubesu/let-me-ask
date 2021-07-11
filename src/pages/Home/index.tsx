@@ -2,7 +2,7 @@ import { Container, Cover, SignInContainer, SignInContent, Separator } from './s
 import illustrationImg from "../../assets/images/illustration.svg";
 import googleIconImg from "../../assets/images/google-icon.svg";
 import logoImg from "../../assets/images/logo.svg";
-import { Button } from '../../components/Button/Button';
+import { Button } from '../../components/Button';
 import { useHistory } from 'react-router';
 import { useAuth } from '../../hooks/useAuth';
 import { FormEvent, useState } from 'react';
@@ -23,6 +23,11 @@ export const Home = () => {
 
     if (!room.exists()) {
       alert('The room does not exist');
+      return;
+    }
+
+    if (room.val().closedAt) {
+      alert('Room already closed.');
       return;
     }
 
