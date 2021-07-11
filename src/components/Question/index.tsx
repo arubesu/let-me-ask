@@ -1,5 +1,6 @@
 import { ReactNode } from 'react';
 import { Container, Footer, UserInfo } from './styles';
+import classnames from 'classnames';
 
 type QuestionProps = {
   content: string;
@@ -7,6 +8,8 @@ type QuestionProps = {
     name: string;
     avatar: string;
   };
+  isAnswered?: boolean;
+  isHighlighted?: boolean;
   children?: ReactNode;
 }
 
@@ -14,9 +17,16 @@ export function Question({
   content,
   author,
   children,
+  isAnswered = false,
+  isHighlighted = false,
 }: QuestionProps) {
   return (
-    <Container>
+    <Container className={
+      classnames({
+        answered: isAnswered,
+        highlighted: isHighlighted && !isAnswered
+      })
+    }>
       <p>{content}</p>
       <Footer>
         <UserInfo>
