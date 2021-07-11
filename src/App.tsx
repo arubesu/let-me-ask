@@ -4,10 +4,15 @@ import { Home } from "./pages/Home";
 import { NewRoom } from "./pages/NewRoom";
 import { Room } from "./pages/Room";
 import { AdminRoom } from './pages/AdminRoom';
+import { Toaster } from 'react-hot-toast'
 
 function App() {
   return (
     <BrowserRouter>
+      <Toaster
+        position="top-center"
+        reverseOrder={false}
+      />
       <AuthContextProvider>
         <Switch>
           <Route path="/" exact component={Home} />
