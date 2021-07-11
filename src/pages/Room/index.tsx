@@ -1,42 +1,19 @@
-
-import { FormEvent, useState, useEffect } from 'react';
+import { FormEvent, useState } from 'react';
 import { useParams } from 'react-router-dom'
 
-import { Button } from '../../components/Button/Button';
-import { ClipboardCopier } from '../../components/ClipboardCopier';
+import { Button } from '../../components/Button';
+import { RoomContainer } from '../../components/Room/Container';
+import { QuestionsBoardContainer } from '../../components/QuestionBoard/QuestionsBoardContainer';
+import { QuestionsBoardFooter } from '../../components/QuestionBoard/styles';
+import { RoomHeader } from '../../components/Room/RoomHeader';
 import { useAuth } from '../../hooks/useAuth';
 import { database } from '../../services/firebase';
 
-import logoImg from '../../assets/images/logo.svg';
-import {
-  Container, Content, QuestionsBoard,
-  QuestionsBoardFooter, QuestionsBoardHeader
-} from './styles';
 import { UserInfo } from '../../components/UserInfo/UserInfo';
+import { QuestionList } from '../../components/QuestionBoard/QuestionList';
 
 interface RoomParams {
   id: string;
-}
-
-type FirebaseQuestions = Record<string, {
-  author: {
-    name: string;
-    avatar: string;
-  }
-  content: string;
-  isAnswered: boolean;
-  isHighlighted: boolean;
-}>
-
-interface Question {
-  id: string;
-  author: {
-    name: string;
-    avatar: string;
-  }
-  content: string;
-  isAnswered: boolean;
-  isHighlighted: boolean;
 }
 
 export const Room = () => {
@@ -46,35 +23,6 @@ export const Room = () => {
   const roomId = params.id;
 
   const [newQuestion, setNewQuestion] = useState('');
-  const [questions, setQuestions] = useState<Question[]>([])
-  const [title, setTitle] = useState('');
-
-  useEffect(() => {
-    const roomRef = database.ref(`rooms/${roomId}`);
-
-    roomRef.on('value', room => {
-      const databaseRoom = room.val();
-
-      if (!databaseRoom)
-        return;
-
-      const firebaseQuestions: FirebaseQuestions = databaseRoom?.questions ?? {};
-
-      const roomQuestions = Object.entries(firebaseQuestions).map(([key, value]) => {
-        return {
-          id: key,
-          content: value.content,
-          author: value.author,
-          isHighlighted: value.isHighlighted,
-          isAnswered: value.isAnswered,
-        }
-      })
-
-      setTitle(databaseRoom.title);
-      setQuestions(roomQuestions);
-    })
-
-  }, [roomId]);
 
   const handleSendQuestion = async (event: FormEvent) => {
     event.preventDefault();
@@ -102,22 +50,10 @@ export const Room = () => {
     setNewQuestion('');
   }
 
-
   return (
-    <Container>
-      <header>
-        <Content>
-          <img src={logoImg} alt="Letmeask" />
-          <ClipboardCopier text={roomId} label="Room#" />
-        </Content>
-      </header>
-
-      <QuestionsBoard>
-        <QuestionsBoardHeader>
-          <h1>Room {title}</h1>
-          {questions.length > 0 && <span>{questions.length} question(s)</span>}
-        </QuestionsBoardHeader>
-
+    <RoomContainer>
+      <RoomHeader roomId={roomId} />
+      <QuestionsBoardContainer roomId={roomId}>
         <form onSubmit={handleSendQuestion}>
           <textarea
             placeholder="What do you want to ask?"
@@ -134,7 +70,8 @@ export const Room = () => {
             <Button type="submit" disabled={!user}>Send a question</Button>
           </QuestionsBoardFooter>
         </form>
-      </QuestionsBoard>
-    </Container>
+        <QuestionList roomId={roomId} />
+      </QuestionsBoardContainer>
+    </RoomContainer>
   );
 }
