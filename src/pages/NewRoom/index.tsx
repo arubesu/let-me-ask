@@ -2,7 +2,7 @@ import { FormEvent, useState } from 'react';
 import { Container, Cover, MainContainer, MainContent } from './styles';
 import illustrationImg from "../../assets/images/illustration.svg";
 import logoImg from "../../assets/images/logo.svg";
-import { Button } from '../../components/Button/Button';
+import { Button } from '../../components/Button';
 import { Link, useHistory } from 'react-router-dom';
 import { useAuth } from '../../hooks/useAuth';
 import { firebase } from '../../services/firebase';

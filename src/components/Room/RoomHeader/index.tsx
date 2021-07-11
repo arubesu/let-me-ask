@@ -2,7 +2,7 @@ import { Header, Content } from './styles';
 import { ClipboardCopier } from '../../ClipboardCopier';
 import { Button } from '../../Button';
 
-import logoImg from '../../assets/images/logo.svg';
+import logoImg from '../../../assets/images/logo.svg'
 
 interface RoomHeaderProps {
   roomId: string;

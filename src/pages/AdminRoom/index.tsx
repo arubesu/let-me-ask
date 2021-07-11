@@ -5,7 +5,6 @@ import { RoomContainer } from '../../components/Room/Container';
 import { QuestionsBoardContainer } from '../../components/QuestionBoard/QuestionsBoardContainer';
 import { database } from '../../services/firebase';
 
-import '../styles/room.scss';
 import { QuestionList } from '../../components/QuestionBoard/QuestionList';
 
 type RoomParams = {
