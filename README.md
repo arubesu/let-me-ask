@@ -1,5 +1,5 @@
 <h1 align="center">
-    <img alt="let-me-ask" title="#let-me-ask" src="./public/images/logo.svg" />
+    <img alt="let-me-ask" title="#let-me-ask" src="https://raw.githubusercontent.com/arubesu/let-me-ask/main/public/logo.svg" />
 </h1>
 
 <h3 align="center"> Every Question has an answer
@@ -10,7 +10,7 @@
 
   <img alt="Repository size" src="https://img.shields.io/github/repo-size/arubesu/let-me-ask">
 
-  <a href="https://github.com/arubesu/let-me-ask/commits/master">
+  <a href="https://github.com/arubesu/let-me-ask/commits/main">
     <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/arubesu/let-me-ask">
   </a>
     <img alt="Status" src="https://img.shields.io/badge/Status-WIP-yellow">
@@ -118,7 +118,7 @@ The following tools were used in the construction of the project:
 -   **[firebase](https://firebase.google.com)**
 -   **[styled-components](https://styled-components.com)**
 
-> See the file  [package.json](https://github.com/arubesu/let-me-ask/blob/master/package.json)
+> See the file  [package.json](https://github.com/arubesu/let-me-ask/blob/main/package.json)
 
 #### **Tools**
 
