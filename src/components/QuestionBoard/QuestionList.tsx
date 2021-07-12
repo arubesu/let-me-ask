@@ -9,6 +9,7 @@ import checkImg from '../../assets/images/check.svg';
 import answerImg from '../../assets/images/answer.svg';
 import { QuestionsListContainer } from "./styles";
 import { ConfirmationModal } from "../Modals/ConfirmationModal";
+import { EmptyQuestion } from "../EmptyQuestion";
 
 interface QuestionListProps {
   isAdmin?: boolean;
@@ -72,6 +73,10 @@ export const QuestionList = ({
         onConfirm={handleDeleteQuestion}
       />
       <QuestionsListContainer>
+        {
+          questions.length == 0 &&
+          <EmptyQuestion isAdmin={isAdmin} />
+        }
         {questions.map(question => {
           return (
             <Question
