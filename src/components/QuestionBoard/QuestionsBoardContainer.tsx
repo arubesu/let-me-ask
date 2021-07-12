@@ -7,13 +7,12 @@ import {
 } from './styles';
 
 interface QuestionsBoardContainerProps {
-  roomId: string;
   children: React.ReactNode;
 }
 
-export const QuestionsBoardContainer = ({ children, roomId }:
+export const QuestionsBoardContainer = ({ children }:
   QuestionsBoardContainerProps) => {
-  const { title, questions } = useRoom(roomId)
+  const { title, questions } = useRoom();
 
   return (
     <QuestionsBoard>

@@ -3,13 +3,15 @@ import { ClipboardCopier } from '../../ClipboardCopier';
 import { Button } from '../../Button';
 
 import logoImg from '../../../assets/images/logo.svg'
+import { useRoom } from '../../../hooks/useRoom';
 
 interface RoomHeaderProps {
-  roomId: string;
   handleCloseRoom?: () => Promise<void>;
 }
 
-export const RoomHeader = ({ roomId, handleCloseRoom }: RoomHeaderProps) => {
+export const RoomHeader = ({ handleCloseRoom }: RoomHeaderProps) => {
+  const { roomId } = useRoom();
+
   return (
     <Header>
       <Content>
