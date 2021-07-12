@@ -42,8 +42,8 @@ export const QuestionForm: React.FC = () => {
     <form onSubmit={handleSendQuestion}>
       <textarea
         placeholder="What do you want to ask?"
-        onBlur={event => setNewQuestion(event.target.value)}
-        defaultValue={newQuestion} />
+        onChange={event => setNewQuestion(event.target.value)}
+        value={newQuestion} />
 
       <QuestionsBoardFooter>
         {user ? (
