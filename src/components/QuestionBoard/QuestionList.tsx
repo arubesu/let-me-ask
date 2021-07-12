@@ -74,7 +74,7 @@ export const QuestionList = ({
       />
       <QuestionsListContainer>
         {
-          questions.length == 0 &&
+          questions.length === 0 &&
           <EmptyQuestion isAdmin={isAdmin} />
         }
         {questions.map(question => {
