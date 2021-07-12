@@ -26,7 +26,7 @@ export const NewRoom = () => {
       ownerId: user?.id,
     });
 
-    history.push(`/rooms/${newRoomRef.key}`)
+    history.push(`/admin/rooms/${newRoomRef.key}`)
   }
 
   return (
