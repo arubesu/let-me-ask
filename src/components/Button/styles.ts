@@ -4,7 +4,7 @@ export const CustomButton = styled.button`
   height: 3.125rem;
   border-radius: 0.5rem;
   font-weight: 500;
-  background: #835afd;
+  background: ${props => props.color ? props.color : '#835afd'};
   color: white;
   padding: 0 2rem;
 
@@ -32,7 +32,7 @@ export const CustomButton = styled.button`
 
   &.outlined {
     background: #FFF;
-    border: 1px solid #835afd;
-    color: #835afd;
+    border: 1px solid ${props => props.color ? props.color : '#835afd'};
+    color: ${props => props.color ? props.color : '#835afd'};
   }
 `;
