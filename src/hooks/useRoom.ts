@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 
 import { database } from "../services/firebase";
 import { useAuth } from "./useAuth";
@@ -29,7 +30,14 @@ type QuestionType = {
   likeId: string | undefined;
 }
 
-export function useRoom(roomId: string) {
+interface RoomParams {
+  id: string;
+}
+
+export function useRoom() {
+  const params = useParams<RoomParams>();
+  const roomId = params.id;
+
   const { user } = useAuth();
   const [questions, setQuestions] = useState<QuestionType[]>([])
   const [title, setTitle] = useState('');
@@ -62,5 +70,5 @@ export function useRoom(roomId: string) {
     }
   }, [roomId, user?.id]);
 
-  return { questions, title }
+  return { roomId, questions, title }
 }
