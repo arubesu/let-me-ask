@@ -7,6 +7,8 @@ import { useHistory } from 'react-router';
 import { useAuth } from '../../hooks/useAuth';
 import { FormEvent, useState } from 'react';
 import { database } from '../../services/firebase'
+import { toast } from 'react-hot-toast'
+
 export const Home = () => {
 
   const { user, signInWithGoogle } = useAuth();
@@ -22,12 +24,12 @@ export const Home = () => {
     const room = await database.ref(`rooms/${roomCode}`).get();
 
     if (!room.exists()) {
-      alert('The room does not exist');
+      toast.error('The room does not exist');
       return;
     }
 
     if (room.val().closedAt) {
-      alert('Room already closed.');
+      toast.error('Room already closed.');
       return;
     }
 
